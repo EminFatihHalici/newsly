@@ -4,14 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles/asstes.css">
     <link rel="stylesheet" href="./styles/fonts.css">
     <script src="./scripts/fetch.js"></script>
     <title>Newsly</title>
 </head>
 
-<body>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="#">Newsly</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex ms-auto" role="search">
+                    <input class="form-control me-2 rounded-pill" type="search" placeholder="Search news..."
+                        aria-label="Search" id="searchInput">
+                    <button class="btn btn-outline-light rounded-pill" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main></main>
+
+    <footer class="bg-primary text-white py-3 mt-5 shadow-sm">
+        <div class="container text-center">
+            <small>&copy; 2025 Newsly. All rights reserved.</small>
+        </div>
+    </footer>
 
 </body>
 <script src="./script.js"></script>

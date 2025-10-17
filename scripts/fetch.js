@@ -1,4 +1,7 @@
-let fetchApi = "https://gnews.io/api/v4/search?q=Google&lang=en&max=10&apikey=6f8b19a189e0c74cc4d77f5471587f29"
+let ApiKeywords = ["Google", "NASA", "Tech", "AI", "Sports", "Finance"];
+let randomKeyword = ApiKeywords[Math.floor(Math.random() * ApiKeywords.length)];
+
+let fetchApi = `https://gnews.io/api/v4/search?q=${randomKeyword}&lang=en&max=12&apikey=6f8b19a189e0c74cc4d77f5471587f29`;
 
 async function fetchNews() {
     try {

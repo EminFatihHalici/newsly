@@ -1,7 +1,7 @@
-let ApiKeywords = ["Google", "NASA", "Tech", "AI", "Sports", "Finance"];
+let ApiKeywords = ["Google", "NASA", "Tech", "AI", "Sports", "Finance", "World", "Politics", "Health", "Education", "Environment", "Travel", "Culture", "Science", "Entertainment", "Business"];
 let randomKeyword = ApiKeywords[Math.floor(Math.random() * ApiKeywords.length)];
 
-let fetchApi = `https://gnews.io/api/v4/search?q=${randomKeyword}&lang=en&max=12&apikey=6f8b19a189e0c74cc4d77f5471587f29`;
+let fetchApi = `https://gnews.io/api/v4/search?q=${randomKeyword}&lang=en&max=8&apikey=6f8b19a189e0c74cc4d77f5471587f29`;
 
 async function fetchNews() {
     try {
@@ -25,14 +25,19 @@ async function renderNews(articles) {
 
     articles.forEach(article => {
         let card = `
-         <div class="card mb-4 shadow-sm">
-                <img src="${article.image || './assets/placeholder.jpg'}" class="card-img-top" alt="News Image">
-                <div class="card-body">
+         <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+            <div class="card h-100 shadow-sm">
+                <img src="${article.image || './assets/placeholder.jpg'}" class="card-img-top" alt="News Image" style="height:180px; object-fit:cover;">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${article.title}</h5>
-                    <p class="card-text">${article.description || "No description available."}</p>
-                    <a href="${article.url}" target="_blank" class="btn btn-primary">Go to website</a>
+                    <p class="card-text text-truncate">${article.description || "No description available."}</p>
+                    <div class="mt-auto d-flex justify-content-between">
+                        <button class="btn btn-outline-primary btn-sm read-more-btn">Read More</button>
+                        <a href="${article.url}" target="_blank" class="btn btn-primary btn-sm">Go to Website</a>
+                    </div>
                 </div>
             </div>
+        </div>
         `;
         container.innerHTML += card;
     });

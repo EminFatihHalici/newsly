@@ -31,8 +31,7 @@ async function renderNews(articles) {
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${article.title}</h5>
                     <p class="card-text text-truncate">${article.description || "No description available."}</p>
-                    <div class="mt-auto d-flex justify-content-between">
-                        <button class="btn btn-outline-primary btn-sm read-more-btn">Read More</button>
+                    <div class="mt-auto d-flex justify-content-center">
                         <a href="${article.url}" target="_blank" class="btn btn-primary btn-sm">Go to Website</a>
                     </div>
                 </div>

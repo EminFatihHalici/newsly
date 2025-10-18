@@ -27,7 +27,7 @@ async function renderNews(articles) {
         let card = `
          <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
             <div class="card h-100 shadow-sm">
-                <img src="${article.image || './assets/placeholder.jpg'}" class="card-img-top" alt="News Image" style="height:180px; object-fit:cover;">
+                <img src="${article.image}" class="card-img-top" alt="News Image"style="height:180px; object-fit:cover;"onerror="this.src='./assets/placeholder.png'">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${article.title}</h5>
                     <p class="card-text text-truncate">${article.description || "No description available."}</p>

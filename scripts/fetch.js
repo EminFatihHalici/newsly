@@ -46,9 +46,15 @@ async function renderNews(articles) {
 fetchNews();
 
 function getSearchInput() {
-   return document.getElementById("searchInput").value.toLowerCase().trim();
+    return document.getElementById("searchInput").value.toLowerCase().trim();
 }
 
 function filterNews() {
     return articles.filter(article => (article.title && article.title.toLowerCase().includes(getSearchInput())) || (article.description && article.description.toLowerCase().includes(getSearchInput())));
+}
+
+function showAlert(message, type = "info") {
+    document.getElementById('newsContainer').innerHTML = `
+    <div class="alert alert-${type} text-center w-75 mx-auto mt-5 shadow-sm"
+              style="font-size: clamp(1rem, 4vw, 1.5rem)">${message}</div>`
 }

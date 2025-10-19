@@ -48,3 +48,7 @@ fetchNews();
 function getSearchInput() {
    return document.getElementById("searchInput").value.toLowerCase().trim();
 }
+
+function filterNews() {
+    return articles.filter(article => (article.title && article.title.toLowerCase().includes(getSearchInput())) || (article.description && article.description.toLowerCase().includes(getSearchInput())));
+}

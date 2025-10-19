@@ -44,3 +44,7 @@ async function renderNews(articles) {
 
 
 fetchNews();
+
+function getSearchInput() {
+   return document.getElementById("searchInput").value.toLowerCase().trim();
+}

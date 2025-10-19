@@ -1,14 +1,14 @@
 let ApiKeywords = ["Google", "NASA", "Tech", "AI", "Sports", "Finance", "World", "Politics", "Health", "Education", "Environment", "Travel", "Culture", "Science", "Entertainment", "Business"];
 let randomKeyword = ApiKeywords[Math.floor(Math.random() * ApiKeywords.length)];
-
+let allArticles = [];
 let fetchApi = `https://gnews.io/api/v4/search?q=${randomKeyword}&lang=en&max=8&apikey=6f8b19a189e0c74cc4d77f5471587f29`;
 
 async function fetchNews() {
     try {
         let response = await fetch(fetchApi);
         let data = await response.json();
+        allArticles = data.articles || [];
         renderNews(data.articles);
-        console.log(data.articles);
     }
 
     catch (error) {
@@ -49,8 +49,8 @@ function getSearchInput() {
     return document.getElementById("searchInput").value.toLowerCase().trim();
 }
 
-function filterNews() {
-    return articles.filter(article => (article.title && article.title.toLowerCase().includes(getSearchInput())) || (article.description && article.description.toLowerCase().includes(getSearchInput())));
+function filterNews(input, articles) {
+    return articles.filter(article => (article.title && article.title.toLowerCase().includes(input)) || (article.description && article.description.toLowerCase().includes(input)));
 }
 
 function showAlert(message, type = "info") {
@@ -58,3 +58,26 @@ function showAlert(message, type = "info") {
     <div class="alert alert-${type} text-center w-75 mx-auto mt-5 shadow-sm"
               style="font-size: clamp(1rem, 4vw, 1.5rem)">${message}</div>`
 }
+
+
+function searchNews() {
+    let input = getSearchInput();
+    if (!input) {
+        renderNews(allArticles);
+        return;
+    }
+
+    if (input.length < 3) {
+        showAlert("🔎 Please enter at least 3 letters", "info");
+        return;
+    }
+
+    let filtered = filterNews(input, allArticles);
+    if (filtered.length === 0) {
+        showAlert("❌ No news found", "danger");
+        return;
+    }
+
+    renderNews(filtered);
+}
+

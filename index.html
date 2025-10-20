@@ -13,7 +13,7 @@
     <title>Newsly</title>
 </head>
 
-<body class="bg-light">
+<body onload="fetchNews()" class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
         <div class="container">
             <a class="navbar-brand fw-bold fs-4" href="#">Newsly</a>
@@ -22,7 +22,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <form class="d-flex ms-auto" role="search" onsubmit="event.preventDefault(); searchNews(allArticless);">
+                <form class="d-flex ms-auto" role="search" onsubmit="event.preventDefault(); searchNews(allArticles);">
                     <input id="searchInput" class="form-control me-2 rounded-pill" type="search"
                         placeholder="Search news..." aria-label="Search" id="searchInput">
                     <button class="btn btn-outline-light rounded-pill" type="submit">Search</button>

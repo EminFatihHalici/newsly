@@ -5,3 +5,22 @@ body {
 main.container {
     padding-top: 3rem;
 }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+#newsContainer .alert {
+    margin-top: 10vh;
+    text-align: center;
+}

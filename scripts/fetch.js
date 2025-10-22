@@ -10,11 +10,14 @@ window.addEventListener("load", () => {
 })
 
 async function fetchNews() {
+    showLoading();
     try {
         let response = await fetch(fetchApi);
         let data = await response.json();
         allArticles = data.articles || [];
-        renderNews(data.articles);
+        setTimeout(() => {
+            renderNews(allArticles);
+        }, 1000);
     }
 
     catch (error) {
@@ -86,4 +89,14 @@ function searchNews() {
         renderNews(filtered);
     }
 
+}
+
+function showLoading() {
+    let container = document.getElementById('newsContainer');
+    container.innerHTML = `
+    <div class="d-flex flex-column justify-content-center align-items-center"
+         style="height: 70vh;">
+      <div class="spinner-border text-primary" role="status" style="width: 4rem; height: 4rem;"></div>
+      <p class="mt-3 fw-semibold fs-5 text-primary">Loading latest news...</p>
+    </div>`;
 }

@@ -58,7 +58,14 @@ function showAlert(message, type = "info") {
 
 
 function searchNews() {
+    let searchInput = document.getElementById("searchInput");
     let input = getSearchInput();
+    let container = document.getElementById("newsContainer");
+    searchInput.addEventListener("input", searchNews);
+    window.addEventListener("load", () => {
+        searchInput.focus();
+    })
+
     if (!input) {
         renderNews(allArticles);
         return;
@@ -72,8 +79,8 @@ function searchNews() {
     let filtered = filterNews(input, allArticles);
     if (filtered.length === 0) {
         showAlert("❌ No news found", "danger");
-        return;
+    } else {
+        renderNews(filtered);
     }
 
-    renderNews(filtered);
 }

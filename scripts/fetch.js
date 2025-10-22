@@ -5,9 +5,6 @@ let fetchApi = `https://gnews.io/api/v4/search?q=${randomKeyword}&lang=en&max=8&
 let searchInput = document.getElementById("searchInput");
 
 searchInput.addEventListener("input", searchNews);
-window.addEventListener("load", () => {
-    searchInput.focus();
-})
 
 async function fetchNews() {
     showLoading();

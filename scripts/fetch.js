@@ -2,6 +2,12 @@ let ApiKeywords = ["Google", "NASA", "Tech", "AI", "Sports", "Finance", "World",
 let randomKeyword = ApiKeywords[Math.floor(Math.random() * ApiKeywords.length)];
 let allArticles = [];
 let fetchApi = `https://gnews.io/api/v4/search?q=${randomKeyword}&lang=en&max=8&apikey=6f8b19a189e0c74cc4d77f5471587f29`;
+let searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", searchNews);
+window.addEventListener("load", () => {
+    searchInput.focus();
+})
 
 async function fetchNews() {
     try {
@@ -58,13 +64,10 @@ function showAlert(message, type = "info") {
 
 
 function searchNews() {
-    let searchInput = document.getElementById("searchInput");
+
     let input = getSearchInput();
     let container = document.getElementById("newsContainer");
-    searchInput.addEventListener("input", searchNews);
-    window.addEventListener("load", () => {
-        searchInput.focus();
-    })
+
 
     if (!input) {
         renderNews(allArticles);
